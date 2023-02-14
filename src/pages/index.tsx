@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -64,12 +64,47 @@ const Container = (propos: ChildProps) => {
 }
 
 
+const ComponenteEspiral = () => {
+
+  const myRef2 = useRef<HTMLDivElement>(null);
+
+
+  return (
+    <div ref={myRef2}></div>
+  );
+};
+
+
 const ConteudoSobre = () => {
+
+  const myRef = useRef<HTMLDivElement>(null);
+
+  const text = "Este é um texto de exemplo.";
+  const typingSpeed = 50; // em milissegundos
+  let index = 0;
+
+  function type() {
+    let myElement = myRef.current;
+    if (index < text.length) {
+      if (myElement) {
+
+        myElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, typingSpeed);
+      }
+
+    }
+  }
+
+  useEffect(() => {
+    type();
+  }, []);
+
   return (
     <>
       <div className={styles.conteudo}>
         <div>
-          <h1>Sobre mim e minha competencias</h1>
+          <h1 ref={myRef}></h1>
         </div>
         <br />
         <div>
@@ -84,7 +119,7 @@ const ConteudoSobre = () => {
         </div>
       </div>
       <div className={styles.conteudoImg}>
-        <div className={styles.img}> </div>
+        <ComponenteEspiral />
       </div>
     </>
   );
@@ -92,10 +127,34 @@ const ConteudoSobre = () => {
 
 
 const ConteudoSkil = () => {
+  
+  const myRef = useRef<HTMLDivElement>(null);
+
+  const text = "Skils e experiencias";
+  
+  const typingSpeed = 50; // em milissegundos
+  let index = 0;
+
+  function type() {
+    let myElement = myRef.current?.getElementsByClassName(styles.tituloSkil)[0];
+    if (index < text.length) {
+      if (myElement) {
+          myElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, typingSpeed);
+      }
+
+    }
+  }
+
+  useEffect(() => {
+    type();
+  }, []);
+
   return (
     <>
-      <div className={styles.conteudo}>
-        <h1>Minhas Skils <br /> <br /> Experiencias</h1>
+      <div ref={myRef} className={styles.conteudo}>
+        <h1 className={styles.tituloSkil}><br /> <br /></h1>
         <br />
         <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
           Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -106,19 +165,19 @@ const ConteudoSkil = () => {
       <div className={styles.skil}>
         <div className={styles.deshskil}>
           <h3>React Js</h3>
-          <hr className={styles.hrskill} />
+          <hr className={styles.hrskill1} />
         </div>
         <div className={styles.deshskil}>
           <h3>React Js</h3>
-          <hr className={styles.hrskill} />
+          <hr className={styles.hrskill2} />
         </div>
         <div className={styles.deshskil}>
           <h3>React Js</h3>
-          <hr className={styles.hrskill} />
+          <hr className={styles.hrskill3} />
         </div>
         <div className={styles.deshskil}>
           <h3>React Js</h3>
-          <hr className={styles.hrskill} />
+          <hr className={styles.hrskill4} />
         </div>
         <div className={styles.rowSkil}>
           <div className={styles.cardSkill}>
@@ -199,8 +258,51 @@ const Redes = () => {
 
 export default function Home() {
 
-
+  const canvas = useRef<HTMLDivElement>(null);
   const [menu, setMenu] = useState<StadoMenu>(StadoMenu.sobre);
+  let contador = 0;
+
+  const letters = "Js,HTML,NodeJS,Express, NextJs, NestJs, Go".split(",");
+
+  function generateLetras() {
+
+    let elemento = canvas.current;
+
+
+    for (let i = 0; i < 1; i++) {
+      const letter = letters[Math.floor(Math.random() * letters.length)];
+      const x = Math.random() * window.innerWidth / 2 + 1100;
+      const y = Math.random() * window.innerHeight / 3 + 300;
+
+      const letterElement = document.createElement("div");
+
+      letterElement?.classList.add(styles.letras);
+      letterElement!.style.left = `${x}px`;
+      letterElement!.style.top = `${y}px`;
+      letterElement!.textContent = letter;
+
+      elemento?.appendChild(letterElement);
+
+    }
+
+  }
+
+  useEffect(() => {
+    if (menu == StadoMenu.sobre) {
+      const intervalId = setInterval(generateLetras, 100);
+      console.log("rodando");
+      return () => clearInterval(intervalId)
+    } else {
+      let elemento = canvas.current;
+      var elements = elemento?.getElementsByClassName(styles.letras);
+      if (elements) {
+        while (elements!.length > 0) {
+          elements![0].remove();
+        }
+      }
+    }
+  }, [menu]);
+
 
   /**
    * Construindo aplicacoes 
@@ -226,7 +328,7 @@ export default function Home() {
 
 
   return (
-    <div>
+    <div ref={canvas} className={styles.teste} >
       <SideBar s={styles.sidbar}>
         <Logo />
         <Menu s={styles.menu}>
