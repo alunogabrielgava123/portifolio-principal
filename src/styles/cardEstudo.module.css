@@ -1,0 +1,28 @@
+.cardEstudo {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   padding: 1rem;
+   background-color: rgb(56, 53, 53);
+}
+
+.cardEstudo h2 {
+   padding-bottom: 1rem;
+   font-family: 'Courier New', Courier, monospace;
+}
+
+.cardEstudo a {
+   color: gray;
+   margin-top: 1rem;
+}
+
+.cardEstudo a:hover {
+   color: white;
+}
+
+.cardEstudo p {
+   line-height: 1rem;
+   font-size: medium;
+   font-family: 'Courier New', Courier, monospace;
+
+}

@@ -11,6 +11,31 @@
   justify-content: space-between;
 }
 
+
+.conteudos {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  margin-right: 2rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+.linkLi {
+  margin: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: medium;
+}
+
+.linkLiOff {
+  margin: 1rem;
+  cursor: pointer;
+  color: gray;
+  font-size: small;
+}
+
 .menu {
   list-style: none;
   display: flex;
@@ -18,13 +43,18 @@
   align-items: center;
 }
 
+/* .canvas-container {
+  width: 100%;
+  height: 500px;
+} */
+
+
 .link:first-child {
   color: rgb(85, 84, 84);
   padding: 1.5rem;
   font-size: 1rem;
   border-top: 0.10px solid rgb(58, 54, 54);
   cursor: pointer;
-  color: rgb(4, 211, 163);
 }
 
 .link {
@@ -33,6 +63,7 @@
   font-size: 1rem;
   border-bottom: 0.10px solid rgb(58, 54, 54);
   cursor: pointer;
+
 }
 
 /* .teste {
@@ -46,16 +77,15 @@
 } */
 
 
-.tituloSkil {
-  
-}
+
+
+.tituloSkil {}
 
 .container {
   color: rgb(238, 221, 221);
   width: calc(100% - 130px);
   height: 100vh;
   float: right;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -68,29 +98,46 @@
   color: white;
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards, fadeOut 1s ease-in-out 1s forwards;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
   from {
-  opacity: 0;
+    opacity: 0;
   }
+
   to {
-  opacity: 1;
+    opacity: 1;
   }
-  }
-  
-  @keyframes fadeOut {
+}
+
+@keyframes fadeOut {
   from {
-  opacity: 1;
+    opacity: 1;
   }
+
   to {
-  opacity: 0;
+    opacity: 0;
   }
 }
 
 .conteudo {
   width: 50%;
-  line-height: 30px;
+  line-height: 23px;
+  margin-left: 3rem;
+}
+
+.conteudoAnimacaoSobre {
+  width: 50%;
+  line-height: 23px;
+  margin-left: 3rem;
+}
+
+.conteudoQrcode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  line-height: 23px;
   margin-left: 3rem;
 }
 
@@ -100,6 +147,11 @@
   grid-template-rows: 1fr 1fr;
   grid-gap: 10px;
   margin-right: 2rem;
+}
+
+.gridConteudoEstudos>div {
+  min-width: 300px;
+  min-height: 175px;
 }
 
 .saibaMaisEstudos {
@@ -155,12 +207,14 @@
   border: none;
   background-image: linear-gradient(to right, rgb(13, 238, 227) 80%, rgb(47, 47, 49) 50%);
 }
+
 .hrskill3 {
   height: 4px;
   margin-top: 10px;
   border: none;
   background-image: linear-gradient(to right, rgb(212, 13, 238) 60%, rgb(47, 47, 49) 50%);
 }
+
 .hrskill4 {
   height: 4px;
   margin-top: 10px;
