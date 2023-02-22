@@ -185,9 +185,7 @@
   align-items: center;
 }
 
-.conteudo h1 {
-  font-size: 3rem;
-}
+
 
 .rowSkil {
   display: flex;
@@ -241,6 +239,4 @@
   background-repeat: no-repeat;
 }
 
-.conteudo p {
-  font-size: 1.15rem;
-}
+
