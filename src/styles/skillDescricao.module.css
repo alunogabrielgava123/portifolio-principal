@@ -3,7 +3,9 @@
   background-color: rgb(46, 45, 45);
   margin-right: 2rem;
   margin-top: 2rem;
+  max-width: 300px;
   line-height: 18px;
+  box-sizing: border-box; /* Adicionado para incluir padding e border na largura total */
 }
 
 .rowData {
@@ -11,14 +13,29 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-size: medium;
   padding-top: 1rem;
   padding-bottom: 8px;
 }
 
 .cardSkill p {
   font-family: 'Courier New', Courier, monospace;
+  font-size: small;
 }
 
 .cardSkill h2 {
   font-family: 'Courier New', Courier, monospace;
+}
+
+/* Estilos para telas com largura de até 600px */
+@media (max-width: 600px) {
+  .cardSkill {
+    max-width: 100%; /* O card ocupará a largura total em telas pequenas */
+    margin-right: 0; /* Removendo a margem direita em telas pequenas */
+    margin: 0.2rem;
+  }
+
+  .rowData {
+    flex-direction: column; /* Os itens serão empilhados verticalmente em telas pequenas */
+  }
 }

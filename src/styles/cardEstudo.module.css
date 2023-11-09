@@ -4,10 +4,13 @@
    justify-content: flex-start;
    padding: 1rem;
    background-color: rgb(56, 53, 53);
+   max-width: 300px; /* Adicionado para limitar a largura máxima do card */
+   box-sizing: border-box; /* Adicionado para incluir padding e border na largura total */
 }
 
 .cardEstudo h2 {
    padding-bottom: 1rem;
+   font-size: medium;
    font-family: 'Courier New', Courier, monospace;
 }
 
@@ -24,5 +27,20 @@
    line-height: 1rem;
    font-size: small;
    font-family: 'Courier New', Courier, monospace;
+}
 
+/* Estilos para telas com largura de até 600px */
+@media (max-width: 600px) {
+   .cardEstudo {
+      width: 100px;
+      height: 200px;
+   }
+
+   .cardEstudo h1 {
+      font-size: small;
+   }
+
+   .cardEstudo p {
+      font-size: x-small;
+   }
 }
