@@ -304,7 +304,7 @@ const Projetos = () => {
 
     return (
       <div>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyItems: 'center', justifyContent: 'end' }}>
+        <div className={styles.linkPortifolio}>
           <ul style={{ display: 'flex', listStyle: 'none', marginTop: '10px', alignItems: 'center' }}>
             <li onClick={() => setStateProps(1)} style={projetoState.page[0] ? styleActivite : styleDesativado}>.</li>
             <li onClick={() => setStateProps(2)} style={projetoState.page[1] ? styleActivite : styleDesativado}>.</li>
@@ -333,11 +333,14 @@ const Projetos = () => {
               A documentação da API foi cuidadosamente elaborada, para que os usuários possam utilizar a API facilmente e sem dificuldades.
               Além disso, os usuários têm a opção de receber os dados em formato CSV por e-mail, o que facilita a análise dos dados.</p>
             <p>No geral, este projeto foi desenvolvido com muitas funcionalidades úteis e recursos para melhorar a experiência do usuário, fornecendo dados meteorológicos precisos e confiáveis para aqueles que precisam deles.</p>
+          </div>
+          <div className={styles.link}>
             {MenuSelecaoProjeto()}
           </div>
           <div className={styles.conteudoQrcode}>
-
+            <img src='/qrcode.png' />
           </div>
+
         </>)
       case ProjetoState.IDRCLIMA:
         return (<>
@@ -354,6 +357,8 @@ const Projetos = () => {
               O objetivo do aplicativo é ajudar produtores e pesquisadores a acessar dados agrometeorológicos de forma fácil e rápida para as estações espalhadas por todo o estado do Paraná.
             </p>
             <p>Fico muito feliz em ter tido a oportunidade de contribuir com o desenvolvimento deste aplicativo e espero que ele possa ser útil para muitas pessoas.</p>
+          </div>
+          <div className={styles.link}>
             {MenuSelecaoProjeto()}
           </div>
           <div className={styles.conteudoQrcode}>
@@ -429,7 +434,7 @@ export default function Home() {
 
 
   return (
-    <div ref={canvas} className={styles.teste} >
+    <div ref={canvas} >
       <SideBar s={styles.sidbar}>
         <Logo />
         <Menu s={styles.menu}>

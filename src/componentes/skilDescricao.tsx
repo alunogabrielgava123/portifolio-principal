@@ -11,7 +11,7 @@ export default function SkillDescricaoCard(props: PropsCardDescricao) {
     return (
         <>
             <div className={styles.cardSkill}>
-                <h2>{props.titulo}</h2>
+                <h3>{props.titulo}</h3>
                 <div className={styles.rowData}>
                     <p>Inicio: {props.data}</p>
                 </div>
